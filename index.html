@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistem Laporan PKL Otomatis | Barrr Creative</title>
+    <meta name="description" content="Buat laporan PKL profesional format Word (.docx) secara otomatis. Isi formulir, generate, dan download dalam hitungan detik.">
+
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="static/css/main.css">
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════════════════
+     NAVBAR
+══════════════════════════════════════════════════════════ -->
+<nav class="navbar-custom">
+    <div class="container d-flex align-items-center justify-content-between">
+        <a class="navbar-brand-logo text-decoration-none" href="#">
+            Barrr<span>·</span>Creative
+        </a>
+        <div class="d-flex align-items-center gap-2">
+            <span class="badge-version">
+                <i class="bi bi-file-earmark-word me-1"></i>Sistem Laporan PKL v2.0
+            </span>
+            <a href="https://github.com" target="_blank"
+               class="text-decoration-none text-muted d-none d-md-flex align-items-center gap-1"
+               style="font-size:.78rem;font-weight:600;">
+                <i class="bi bi-github"></i>
+            </a>
+        </div>
+    </div>
+</nav>
+
+<!-- ══════════════════════════════════════════════════════════
+     HERO SECTION
+══════════════════════════════════════════════════════════ -->
+<section class="hero-section">
+    <div class="container">
+        <div class="hero-badge">
+            <i class="bi bi-stars"></i> Generator Laporan PKL Otomatis
+        </div>
+        <h1 class="hero-title">
+            Buat Laporan PKL <span class="highlight">Profesional</span><br>dalam Hitungan Detik
+        </h1>
+        <p class="hero-sub">
+            Isi formulir, klik generate, dan download file Word (.docx) siap cetak
+            dengan format standar akademik — margin 4-4-3-3, font Times New Roman 12pt.
+        </p>
+        <div class="hero-features">
+            <span class="hero-feature-chip"><span class="chip-icon">📄</span> Format .docx Standar</span>
+            <span class="hero-feature-chip"><span class="chip-icon">🎯</span> Margin 4-4-3-3</span>
+            <span class="hero-feature-chip"><span class="chip-icon">📋</span> BAB I-IV Lengkap</span>
+            <span class="hero-feature-chip"><span class="chip-icon">✍️</span> Jurnal Harian</span>
+            <span class="hero-feature-chip"><span class="chip-icon">⚡</span> Instan &amp; Gratis</span>
+        </div>
+    </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     MAIN FORM WIZARD
+══════════════════════════════════════════════════════════ -->
+<div class="container mb-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8 col-xl-7">
+
+            <!-- ══════════════════════════════════════════
+                 WIZARD PROGRESS BAR  (5 step)
+            ══════════════════════════════════════════ -->
+            <div class="wizard-progress">
+
+                <!-- Step 1 – Identitas -->
+                <div class="wizard-step-wrapper">
+                    <div class="wizard-step active" id="ws1">
+                        <div class="wizard-step-circle">
+                            <i class="bi bi-person-fill"></i>
+                        </div>
+                        <span class="wizard-step-label">Identitas</span>
+                    </div>
+                </div>
+                <div class="wizard-connector" id="wc1"></div>
+
+                <!-- Step 2 – Pengesahan -->
+                <div class="wizard-step-wrapper">
+                    <div class="wizard-step" id="ws2">
+                        <div class="wizard-step-circle">
+                            <i class="bi bi-patch-check-fill"></i>
+                        </div>
+                        <span class="wizard-step-label">Pengesahan</span>
+                    </div>
+                </div>
+                <div class="wizard-connector" id="wc2"></div>
+
+                <!-- Step 3 – Kata Pengantar (BARU) -->
+                <div class="wizard-step-wrapper">
+                    <div class="wizard-step" id="ws3">
+                        <div class="wizard-step-circle">
+                            <i class="bi bi-chat-quote-fill"></i>
+                        </div>
+                        <span class="wizard-step-label">Kata Pengantar</span>
+                    </div>
+                </div>
+                <div class="wizard-connector" id="wc3"></div>
+
+
+
+                <!-- Step 4 – Isi Laporan (BARU) -->
+                <div class="wizard-step-wrapper">
+                    <div class="wizard-step" id="ws4">
+                        <div class="wizard-step-circle">
+                            <i class="bi bi-file-text"></i>
+                        </div>
+                        <span class="wizard-step-label">Isi Laporan</span>
+                    </div>
+                </div>
+                <div class="wizard-connector" id="wc4"></div>
+
+                  <!-- Step 5 – Halaman Rujukan -->
+                <div class="wizard-step-wrapper">
+                    <div class="wizard-step" id="ws5">
+                        <div class="wizard-step-circle">
+                            <i class="bi bi-journal-bookmark-fill"></i>
+                        </div>
+                        <span class="wizard-step-label">Rujukan</span>
+                    </div>
+                </div>
+                <div class="wizard-connector" id="wc5"></div>           
+
+                <!-- Step 6 – Opsi & Generate -->
+                <div class="wizard-step-wrapper">
+                    <div class="wizard-step" id="ws6">
+                        <div class="wizard-step-circle">
+                            <i class="bi bi-sliders"></i>
+                        </div>
+                        <span class="wizard-step-label">Opsi &amp; Generate</span>
+                    </div>
+                </div>
+
+            </div><!-- /wizard-progress -->
+
+            <!-- ══════════════════════════════════════════
+                 MAIN CARD
+            ══════════════════════════════════════════ -->
+            <div class="main-card">
+
+                <!-- ────────────────────────────────────────
+                     STEP 1 : Identitas Diri
+                ──────────────────────────────────────── -->
+                <div class="step-panel active" id="step1">
+                    <div class="step-header">
+                        <div class="step-icon"><i class="bi bi-person-vcard"></i></div>
+                        <div>
+                            <p class="step-title">Identitas Diri</p>
+                            <p class="step-subtitle">Informasi dasar tentang Anda dan tempat PKL</p>
+                        </div>
+                    </div>
+
+                    <div class="row g-3">
+                        <!-- Nama Lengkap -->
+                        <div class="col-md-6">
+                            <label class="form-label" for="namaLengkap">
+                                Nama Lengkap <span class="req">*</span>
+                            </label>
+                            <input type="text" class="form-control" id="namaLengkap"
+                                   placeholder="Masukkan nama lengkap Anda">
+                            <div class="invalid-feedback">Nama lengkap wajib diisi.</div>
+                        </div>
+                        <!-- NIS / NIM -->
+                        <div class="col-md-6">
+                            <label class="form-label" for="nisNim">NIS / NIM</label>
+                            <input type="text" class="form-control" id="nisNim"
+                                   placeholder="Nomor Induk Siswa/Mahasiswa">
+                        </div>
+                        <!-- Kelas / Jurusan -->
+                        <div class="col-md-6">
+                            <label class="form-label" for="kelasJurusan">Kelas / Jurusan</label>
+                            <input type="text" class="form-control" id="kelasJurusan"
+                                   placeholder="Contoh: XII TKJ B">
+                        </div>
+                        <!-- Nama Sekolah -->
+                        <div class="col-md-6">
+                            <label class="form-label" for="namaSekolah">Nama Sekolah / Kampus</label>
+                            <input type="text" class="form-control" id="namaSekolah"
+                                   placeholder="SMK/Universitas Anda">
+                        </div>
+                        <!-- Nama Instansi -->
+                        <div class="col-12">
+                            <label class="form-label" for="namaInstansi">
+                                Nama Instansi / Perusahaan <span class="req">*</span>
+                            </label>
+                            <input type="text" class="form-control" id="namaInstansi"
+                                   placeholder="Tempat Anda melaksanakan PKL">
+                            <div class="invalid-feedback">Nama instansi wajib diisi.</div>
+                        </div>
+                        <!-- Pembimbing Lapangan -->
+                        <div class="col-md-6">
+                            <label class="form-label" for="namaPembimbingLapangan">Pembimbing Lapangan</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-transparent border-end-0">
+                                    <i class="bi bi-person-badge text-muted"></i>
+                                </span>
+                                <input type="text" class="form-control border-start-0 ps-0"
+                                       id="namaPembimbingLapangan"
+                                       placeholder="Nama pembimbing di instansi">
+                            </div>
+                        </div>
+                        <!-- Pembimbing Sekolah -->
+                        <div class="col-md-6">
+                            <label class="form-label" for="namaPembimbingSekolah">Pembimbing Sekolah/Kampus</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-transparent border-end-0">
+                                    <i class="bi bi-mortarboard text-muted"></i>
+                                </span>
+                                <input type="text" class="form-control border-start-0 ps-0"
+                                       id="namaPembimbingSekolah"
+                                       placeholder="Nama guru/dosen pembimbing">
+                            </div>
+                        </div>
+                        <!-- Tanggal Mulai -->
+                        <div class="col-md-6">
+                            <label class="form-label" for="tanggalMulai">
+                                <i class="bi bi-calendar-event me-1 text-primary" style="font-size:.8rem;"></i>
+                                Tanggal Mulai PKL
+                            </label>
+                            <input type="date" class="form-control" id="tanggalMulai">
+                        </div>
+                        <!-- Tanggal Selesai -->
+                        <div class="col-md-6">
+                            <label class="form-label" for="tanggalSelesai">
+                                <i class="bi bi-calendar-check me-1 text-primary" style="font-size:.8rem;"></i>
+                                Tanggal Selesai PKL
+                            </label>
+                            <input type="date" class="form-control" id="tanggalSelesai">
+                        </div>
+                    </div>
+
+                    <!-- Nav -->
+                    <div class="wizard-nav">
+                        <button class="btn btn-outline-custom" onclick="prevStep()" style="visibility:hidden;">
+                            <i class="bi bi-arrow-left me-1"></i> Sebelumnya
+                        </button>
+                        <div class="text-muted" style="font-size:.75rem;">Langkah 1 dari 6</div>
+                        <button class="btn btn-primary-custom" onclick="nextStep()">
+                            Selanjutnya <i class="bi bi-arrow-right ms-1"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- ────────────────────────────────────────
+                     STEP 2 : Lembar Pengesahan
+                ──────────────────────────────────────── -->
+                <div class="step-panel" id="step2">
+                    <div class="step-header">
+                        <div class="step-icon"><i class="bi bi-patch-check-fill"></i></div>
+                        <div>
+                            <p class="step-title">Lembar Pengesahan</p>
+                            <p class="step-subtitle">Isi data pengesahan laporan</p>
+                        </div>
+                    </div>
+
+                    <div id="containerlembarpengesahan">
+                        <!-- Diisi oleh JavaScript (pengesahan.js) -->
+                    </div>
+
+                    <button type="button" class="btn btn-add-pengesahan mt-2"
+                            onclick="tambahPengesahan()">
+                        <i class="bi bi-plus-circle me-2"></i>Tambah Halaman Pengesahan Berikutnya
+                    </button>
+
+                    <!-- Nav -->
+                    <div class="wizard-nav">
+                        <button class="btn btn-outline-custom" onclick="prevStep()">
+                            <i class="bi bi-arrow-left me-1"></i> Sebelumnya
+                        </button>
+                        <div class="text-muted" style="font-size:.75rem;">Langkah 2 dari 6</div>
+                        <button class="btn btn-primary-custom" onclick="nextStep()">
+                            Selanjutnya <i class="bi bi-arrow-right ms-1"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- ────────────────────────────────────────
+                     STEP 3 : Kata Pengantar  ← BARU
+                ──────────────────────────────────────── -->
+                <div class="step-panel" id="step3">
+                    <div class="step-header">
+                        <div class="step-icon"><i class="bi bi-chat-quote-fill"></i></div>
+                        <div>
+                            <p class="step-title">Kata Pengantar</p>
+                            <p class="step-subtitle">Isi teks pembuka, ucapan terima kasih, dan penutup</p>
+                        </div>
+                    </div>
+
+                    <!-- 1. Judul -->
+                    <div class="mb-3">
+                        <label class="form-label" for="kpJudul">
+                            Judul <span class="req">*</span>
+                        </label>
+                        <input type="text" class="form-control" id="kpJudul"
+                               value="KATA PENGANTAR"
+                               placeholder="Contoh : KATA PENGANTAR">
+                    </div>
+
+                    <!-- 2. Kata Pembuka -->
+                    <div class="mb-3">
+                        <label class="form-label">
+                            Kata Pembuka <span class="req">*</span>
+                        </label>
+                        <div class="form-text mb-2">
+                            Tuliskan paragraf pembuka. Klik tombol di bawah untuk menambahkan paragraf lainnya.
+                        </div>
+                        <div id="containerKataPembuka"></div>
+                        <button type="button" class="btn btn-add-kegiatan mt-1"
+                                onclick="tambahParagrafPembuka()">
+                            <i class="bi bi-plus-circle me-2"></i>Tambah Paragraf Pembuka
+                        </button>
+                    </div>
+
+                    <!-- 3. Ucapan Terima Kasih -->
+                    <div class="mb-3">
+                        <label class="form-label">
+                            Ucapan Terima Kasih
+                            <span class="badge bg-secondary ms-1" id="badgeJumlahUcapan">0</span>
+                        </label>
+                        <div class="form-text mb-2">
+                            Tambahkan nama dan jabatan pihak yang ingin diucapkan terima kasih sesuai urutan.
+                        </div>
+
+                        <!-- Container dinamis — diisi oleh kata-pengantar.js -->
+                        <div id="containerUcapanTerimaKasih"></div>
+
+                        <button type="button" class="btn btn-add-kegiatan mt-1"
+                                onclick="tambahUcapan()">
+                            <i class="bi bi-plus-circle me-2"></i>Tambah Ucapan Terima Kasih
+                        </button>
+                    </div>
+
+                    <!-- 4. Kata Penutup -->
+                    <div class="mb-3">
+                        <label class="form-label">
+                            Kata Penutup <span class="req">*</span>
+                        </label>
+                        <div class="form-text mb-2">
+                            Tuliskan paragraf penutup. Klik tombol di bawah untuk menambahkan paragraf lainnya.
+                        </div>
+                        <div id="containerKataPenutup"></div>
+                        <button type="button" class="btn btn-add-kegiatan mt-1"
+                                onclick="tambahParagrafPenutup()">
+                            <i class="bi bi-plus-circle me-2"></i>Tambah Paragraf Penutup
+                        </button>
+                    </div>
+
+                    <!-- 5 & 6. Tanda Tangan Penulis -->
+                    <div class="row g-3 mb-1">
+                        <div class="col-md-5">
+                            <label class="form-label" for="kpKotaTanggal">
+                                <i class="bi bi-geo-alt me-1 text-primary"></i>Kota &amp; Tanggal
+                            </label>
+                            <input type="text" class="form-control" id="kpKotaTanggal"
+                                   placeholder="Contoh : Bekasi, Januari 2025">
+                            <div class="form-text">Muncul di atas nama penulis.</div>
+                        </div>
+                        <div class="col-md-7">
+                            <label class="form-label" for="kpNamaPenulis">
+                                <i class="bi bi-person me-1 text-primary"></i>Nama Penulis
+                            </label>
+                            <input type="text" class="form-control" id="kpNamaPenulis"
+                                   placeholder="Nama lengkap penulis">
+                        </div>
+                    </div>
+
+                    <!-- Nav -->
+                    <div class="wizard-nav">
+                        <button class="btn btn-outline-custom" onclick="prevStep()">
+                            <i class="bi bi-arrow-left me-1"></i> Sebelumnya
+                        </button>
+                        <div class="text-muted" style="font-size:.75rem;">Langkah 3 dari 6</div>
+                        <button class="btn btn-primary-custom" onclick="nextStep()">
+                            Selanjutnya <i class="bi bi-arrow-right ms-1"></i>
+                        </button>
+                    </div>
+                </div>
+
+
+
+                <div class="step-panel" id="step4">
+                    <div class="step-header">
+                        <div class="step-icon">
+                            <i class="bi bi-file-text"></i>
+                        </div>
+                        <div>
+                            <p class="step-title">Isi Laporan</p>
+                            <p class="step-subtitle">Susun BAB, isi, paragraf, list, dan gambar</p>
+                        </div>
+                    </div>
+
+                    <!-- CONTAINER UTAMA -->
+                    <div id="containerIsi"></div>
+
+                    <!-- TOMBOL TAMBAH -->
+                    <div class="mt-3">
+                        <button class="btn btn-primary" onclick="tambahBab()">
+                            <i class="bi bi-plus-circle me-1"></i> Tambah BAB
+                        </button>
+                    </div>
+
+                    <!-- NAV -->
+                    <div class="wizard-nav">
+                        <button class="btn btn-outline-custom" onclick="prevStep()">
+                            <i class="bi bi-arrow-left me-1"></i> Sebelumnya
+                        </button>
+                        <div class="text-muted" style="font-size:.75rem;">Langkah 4 dari 6</div>
+                        <button class="btn btn-primary-custom" onclick="nextStep()">
+                            Selanjutnya <i class="bi bi-arrow-right ms-1"></i>
+                        </button>
+                    </div>
+                </div>
+
+
+
+                <!-- ────────────────────────────────────────
+                     STEP 6 : Halaman Rujukan / Daftar Pustaka
+                ──────────────────────────────────────── -->
+                <div class="step-panel" id="step5">
+                    <div class="step-header">
+                        <div class="step-icon"><i class="bi bi-journal-bookmark-fill"></i></div>
+                        <div>
+                            <p class="step-title">Daftar Rujukan / Pustaka</p>
+                            <p class="step-subtitle">Tambahkan sumber referensi laporan Anda (buku, jurnal, atau website)</p>
+                        </div>
+                    </div>
+
+                    <div id="containerRujukan"></div>
+
+                    <div class="mt-3">
+                        <button type="button" class="btn btn-add-kegiatan" onclick="tambahRujukan()">
+                            <i class="bi bi-plus-circle me-2"></i>Tambah Rujukan
+                        </button>
+                    </div>
+
+                    <!-- Nav -->
+                    <div class="wizard-nav mt-4">
+                        <button class="btn btn-outline-custom" onclick="prevStep()">
+                            <i class="bi bi-arrow-left me-1"></i> Sebelumnya
+                        </button>
+                        <div class="text-muted" style="font-size:.75rem;">Langkah 5 dari 6</div>
+                        <button class="btn btn-primary-custom" onclick="nextStep()">
+                            Selanjutnya <i class="bi bi-arrow-right ms-1"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- ────────────────────────────────────────
+                     STEP 7 : Opsi Dokumen & Generate
+                ──────────────────────────────────────── -->
+                <div class="step-panel" id="step6">
+                    <div class="step-header">
+                        <div class="step-icon"><i class="bi bi-sliders2"></i></div>
+                        <div>
+                            <p class="step-title">Opsi Dokumen &amp; Generate</p>
+                            <p class="step-subtitle">Pilih fitur tambahan dan review ringkasan</p>
+                        </div>
+                    </div>
+
+                    <!-- Opsi Cards -->
+                    <p class="form-label mb-3">Fitur Tambahan Dokumen</p>
+                    <div class="row g-2 mb-4">
+                        <div class="col-md-4">
+                            <label class="option-card" id="cardCover"
+                                   onclick="toggleOptionCard('switchCover', 'cardCover')">
+                                <div class="option-card-icon">📑</div>
+                                <div class="option-card-text">
+                                    <strong>Halaman Cover</strong>
+                                    <small>Sampul laporan otomatis</small>
+                                </div>
+                                <div class="ms-auto">
+                                    <input class="form-check-input" type="checkbox"
+                                           id="switchCover" style="display:none;">
+                                </div>
+                            </label>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="option-card selected" id="cardDaftarIsi"
+                                   onclick="toggleOptionCard('switchDaftarIsi', 'cardDaftarIsi')">
+                                <div class="option-card-icon">📋</div>
+                                <div class="option-card-text">
+                                    <strong>Daftar Isi</strong>
+                                    <small>Daftar isi otomatis</small>
+                                </div>
+                                <div class="ms-auto">
+                                    <input class="form-check-input" type="checkbox"
+                                           id="switchDaftarIsi" checked style="display:none;">
+                                </div>
+                            </label>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="option-card" id="cardTandaTangan"
+                                   onclick="toggleOptionCard('switchTandaTangan', 'cardTandaTangan')">
+                                <div class="option-card-icon">✍️</div>
+                                <div class="option-card-text">
+                                    <strong>Tanda Tangan</strong>
+                                    <small>Lembar pengesahan</small>
+                                </div>
+                                <div class="ms-auto">
+                                    <input class="form-check-input" type="checkbox"
+                                           id="switchTandaTangan" style="display:none;">
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Upload Gambar Cover -->
+                    <div class="mb-4" id="coverImageWrapper" style="display:none;">
+                        <label class="form-label">
+                            <i class="bi bi-image me-1 text-primary"></i>
+                            Logo / Gambar Sampul
+                            <small class="text-muted">(Opsional, maks. 10MB)</small>
+                        </label>
+                        <div id="coverDropZone" class="cover-drop-zone"
+                             onclick="document.getElementById('coverImageInput').click()">
+                            <div id="coverDropPlaceholder">
+                                <i class="bi bi-cloud-arrow-up cover-drop-icon"></i>
+                                <p class="cover-drop-text">Klik atau seret gambar ke sini</p>
+                                <p class="cover-drop-sub">PNG, JPG, JPEG (maks. 10 MB)</p>
+                            </div>
+                            <div id="coverImagePreview" style="display:none;">
+                                <img id="coverPreviewImg" src="" alt="Preview Cover"
+                                     class="cover-preview-img">
+                                <button type="button" class="btn-remove-cover"
+                                        id="btnRemoveCover"
+                                        onclick="removeCoverImage(event)">
+                                    <i class="bi bi-x-circle-fill"></i>
+                                </button>
+                                <p id="coverFileName" class="cover-file-name mt-2"></p>
+                            </div>
+                        </div>
+                        <input type="file" id="coverImageInput"
+                               accept="image/png,image/jpg,image/jpeg,image/gif,image/webp"
+                               style="display:none;"
+                               onchange="handleCoverImageSelect(event)">
+                    </div>
+
+                    <!-- Kota untuk tanda tangan -->
+                    <div class="mb-4" id="kotaWrapper" style="display:none;">
+                        <label class="form-label" for="kotaTtd">
+                            <i class="bi bi-geo-alt me-1 text-primary"></i>
+                            Kota (untuk tanda tangan)
+                        </label>
+                        <input type="text" class="form-control" id="kotaTtd"
+                               placeholder="Contoh: Bandung">
+                    </div>
+
+                    <hr style="border-color:var(--border);margin:1.5rem 0;">
+
+                    <!-- Summary Preview -->
+                    <p class="form-label mb-3">
+                        <i class="bi bi-eye me-1 text-primary"></i>Ringkasan Data
+                    </p>
+
+                    <div class="summary-group">
+                        <div class="summary-group-title">
+                            <i class="bi bi-person me-1"></i>Identitas Diri
+                        </div>
+                        <div id="summaryIdentitas">—</div>
+                    </div>
+
+                    <div class="summary-group">
+                        <div class="summary-group-title">
+                            <i class="bi bi-file-earmark-check me-1"></i>Lembar Pengesahan
+                        </div>
+                        <div id="summaryPengesahan" class="pt-1">—</div>
+                    </div>
+
+                    <div class="summary-group">
+                        <div class="summary-group-title">
+                            <i class="bi bi-chat-quote me-1"></i>Kata Pengantar
+                        </div>
+                        <div id="summaryKataPengantar" class="pt-1">—</div>
+                    </div>
+
+                    <div class="summary-group">
+                        <div class="summary-group-title">
+                            <i class="bi bi-card-text me-1"></i>Isi Laporan
+                        </div>
+                        <div id="summaryIsiLaporan" class="pt-1">—</div>
+                    </div>
+
+                    <div class="summary-group">
+                        <div class="summary-group-title">
+                            <i class="bi bi-journal-bookmark-fill me-1"></i>Daftar Rujukan
+                        </div>
+                        <div id="summaryRujukan" class="pt-1">—</div>
+                    </div>
+
+                    <div class="summary-group">
+                        <div class="summary-group-title">
+                            <i class="bi bi-gear me-1"></i>Opsi Dokumen
+                        </div>
+                        <div id="summaryOpsi">—</div>
+                    </div>
+
+                    <!-- Format Info -->
+                    <div class="d-flex align-items-center gap-2 mt-3 mb-1 p-3 rounded-3"
+                         style="background:var(--primary-light);border:1px solid rgba(79,110,247,.2);">
+                        <i class="bi bi-info-circle text-primary"></i>
+                        <small style="font-size:.78rem;color:var(--text-muted);">
+                            Format: <strong>Times New Roman 12pt</strong> ·
+                            Margin <strong>4-4-3-3 cm</strong> ·
+                            Struktur BAB I–IV lengkap
+                        </small>
+                    </div>
+
+                    <!-- Nav -->
+                    <div class="wizard-nav flex-wrap gap-2 mt-4">
+                        <button class="btn btn-outline-custom" onclick="prevStep()">
+                            <i class="bi bi-arrow-left me-1"></i> Sebelumnya
+                        </button>
+                        
+                        <div class="ms-auto d-flex flex-wrap gap-2">
+                            <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#modalResetData">
+                                <i class="bi bi-trash3 me-1"></i> Hapus Semua Data
+                            </button>
+                            <button class="btn btn-generate" onclick="generateLaporan()"
+                                    id="btnGenerateFinal">
+                                <span class="spinner-border d-none me-2"
+                                      id="btnGenerateSpinner2" role="status"></span>
+                                <span id="btnGenerateLabel2">
+                                    <i class="bi bi-file-earmark-arrow-down me-2"></i>
+                                    Generate &amp; Download (.docx)
+                                </span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div><!-- /main-card -->
+
+            <!-- Footer -->
+            <footer class="footer-custom">
+                <p class="m-0">© 2026 <strong>Barrr Creative</strong> — Solusi PKL Cerdas &amp; Cepat 🚀</p>
+                <p class="m-0 mt-1">
+                    Dibuat dengan ❤️ menggunakan
+                    <a href="https://flask.palletsprojects.com/" target="_blank">Flask</a> +
+                    <a href="https://python-docx.readthedocs.io/" target="_blank">python-docx</a>
+                </p>
+            </footer>
+
+        </div>
+    </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     TOAST CONTAINER
+══════════════════════════════════════════════════════════ -->
+<div class="toast-container position-fixed bottom-0 end-0 p-3"
+     id="toastContainer"></div>
+
+<!-- ══════════════════════════════════════════════════════════
+     MODAL RESET DATA
+══════════════════════════════════════════════════════════ -->
+<div class="modal fade" id="modalResetData" tabindex="-1" aria-labelledby="modalResetDataLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-danger" id="modalResetDataLabel">
+            <i class="bi bi-exclamation-triangle-fill me-2"></i>Konfirmasi Hapus Data
+        </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Apakah Anda yakin ingin menghapus <strong>semua input</strong> yang telah Anda isi? 
+        Data yang dihapus tidak dapat dikembalikan lagi, dan lembar kerja akan kembali kosong dari awal.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Batal</button>
+        <button type="button" class="btn btn-danger" onclick="hapusSemuaData()">Ya, Hapus Semua</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Custom JS (ES Module) -->
+
+<script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.2/Sortable.min.js"></script>
+<script type="module" src="/static/js/main.js"></script>
+
+</body>
+</html>
